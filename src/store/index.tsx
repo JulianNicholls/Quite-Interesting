@@ -1,23 +1,15 @@
 import React from 'react';
 
-interface IState {
-  episodes: [];
-  favourites: [];
-}
-
-type ActionType = string;
-
-interface IAction {
-  type: ActionType;
-  payload: any;
-}
+import { IAction, ActionType, IState } from '../interfaces';
 
 interface IProviderProps {
   children: JSX.Element;
 }
 
 export const FETCH_DATA: ActionType = 'FETCH_DATA';
-// const x: ActionType = 'x';
+export const ADD_FAVOURITE: ActionType = 'ADD_FAVOURITE';
+export const REMOVE_FAVOURITE: ActionType = 'REMOVE_FAVOURITE';
+// export const x: ActionType = 'x';
 
 const initialState: IState = { episodes: [], favourites: [] };
 
@@ -29,6 +21,15 @@ function reducer(state: IState, action: IAction): IState {
   switch (action.type) {
     case FETCH_DATA:
       return { ...state, episodes: action.payload };
+
+    case ADD_FAVOURITE:
+      return { ...state, favourites: [...state.favourites, action.payload] };
+
+    case REMOVE_FAVOURITE:
+      return {
+        ...state,
+        favourites: state.favourites.filter(({ id }) => id !== action.payload.id),
+      };
 
     default:
       return state;
