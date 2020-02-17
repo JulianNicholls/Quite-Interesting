@@ -24,6 +24,22 @@ header h1 {
   margin: 0;
 }
 
+header h1 small {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.link {
+  margin-right: 1rem;
+  color: #333;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: black;
+  font-weight: bold;
+}
+
 .episode-layout {
   display: flex;
   flex-wrap: wrap;

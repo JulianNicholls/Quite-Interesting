@@ -18,12 +18,24 @@ export interface IEpisode {
 
 export interface IState {
   episodes: Array<IEpisode>;
-  favourites: Array<any>;
+  favourites: Array<IEpisode>;
 }
 
 export type ActionType = string;
 
 export interface IAction {
   type: ActionType;
-  payload: any;
+  payload: IEpisode | Array<IEpisode>;
+}
+
+export type Dispatch = React.Dispatch<IAction>;
+
+export interface IEpisodeProps {
+  episodes: Array<IEpisode>;
+  store: { state: IState; dispatch: Dispatch };
+  toggleFavourite(
+    episode: IEpisode,
+    favourites: Array<IEpisode>,
+    dispatch: Dispatch
+  ): void;
 }

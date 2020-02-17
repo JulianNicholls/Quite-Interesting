@@ -1,14 +1,16 @@
 import React from 'react';
 
-import { IEpisode } from '../interfaces';
+import { IEpisode, IEpisodeProps } from '../interfaces';
 
-interface IEpisodeList {
-  episodes: Array<IEpisode>;
-  toggleFavourite(e: IEpisode): void;
-  favourites: Array<IEpisode>;
-}
-const EpisodeList = (props: IEpisodeList): Array<JSX.Element> => {
-  const { episodes, toggleFavourite, favourites } = props;
+const EpisodeList = (props: IEpisodeProps): Array<JSX.Element> => {
+  const {
+    store: {
+      state: { favourites },
+      dispatch,
+    },
+    episodes,
+    toggleFavourite,
+  } = props;
 
   return episodes.map((e: IEpisode) => (
     <article className="episode-box" key={e.id}>
@@ -20,7 +22,7 @@ const EpisodeList = (props: IEpisodeList): Array<JSX.Element> => {
           <button
             className="favourite-button"
             type="button"
-            onClick={() => toggleFavourite(e)}
+            onClick={() => toggleFavourite(e, favourites, dispatch)}
           >
             {favourites.includes(e) ? 'Remove' : 'Favourite'}
           </button>
