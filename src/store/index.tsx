@@ -2,10 +2,6 @@ import React from 'react';
 
 import { IAction, ActionType, IState } from '../interfaces';
 
-interface IProviderProps {
-  children: JSX.Element;
-}
-
 export const FETCH_DATA: ActionType = 'FETCH_DATA';
 export const ADD_FAVOURITE: ActionType = 'ADD_FAVOURITE';
 export const REMOVE_FAVOURITE: ActionType = 'REMOVE_FAVOURITE';
@@ -36,12 +32,12 @@ function reducer(state: IState, action: IAction): IState {
   }
 }
 
-export function StoreProvider(props: IProviderProps): JSX.Element {
+export function StoreProvider({
+  children,
+}: JSX.ElementChildrenAttribute): JSX.Element {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
-  return (
-    <Store.Provider value={{ state, dispatch }}>{props.children}</Store.Provider>
-  );
+  return <Store.Provider value={{ state, dispatch }}>{children}</Store.Provider>;
 }
 
 // https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes
