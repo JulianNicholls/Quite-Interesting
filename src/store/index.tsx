@@ -12,17 +12,22 @@ export const Store: React.Context<IState | any> = React.createContext(
 );
 
 function reducer(state: IState, action: IAction): IState {
+  const episode = action.payload as IEpisode;
+
   switch (action.type) {
     case FETCH_DATA:
-      return { ...state, episodes: action.payload };
+      return { ...state, episodes: action.payload as Array<IEpisode> };
 
     case ADD_FAVOURITE:
-      return { ...state, favourites: [...state.favourites, action.payload] };
+      return {
+        ...state,
+        favourites: [...state.favourites, episode],
+      };
 
     case REMOVE_FAVOURITE:
       return {
         ...state,
-        favourites: state.favourites.filter(({ id }) => id !== action.payload.id),
+        favourites: state.favourites.filter(({ id }) => id !== episode.id),
       };
 
     default:

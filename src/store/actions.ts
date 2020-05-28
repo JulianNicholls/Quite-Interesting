@@ -3,7 +3,7 @@ import { FETCH_DATA, ADD_FAVOURITE, REMOVE_FAVOURITE } from '../store';
 const URL: string =
   'https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes';
 
-export const fetchData = async (dispatch: any) => {
+export const fetchData = async (dispatch: (action: IAction) => void) => {
   const response = await fetch(URL);
   const data = await response.json();
 
@@ -13,7 +13,7 @@ export const fetchData = async (dispatch: any) => {
 export const toggleFavourite = (
   episode: IEpisode,
   favourites: Array<IEpisode>,
-  dispatch: any
+  dispatch: (action: IAction) => void
 ): void => {
   const inFavourites: boolean = favourites.includes(episode);
   const action: IAction = {

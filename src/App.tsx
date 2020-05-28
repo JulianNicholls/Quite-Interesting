@@ -6,10 +6,11 @@ import { Store } from './store';
 import './App.css';
 
 interface IAppProps {
-  children: JSX.Element;
+  children: JSX.Element | Array<JSX.Element>;
+  path: string;
 }
 
-const App = (props: any): JSX.Element => {
+const App = ({ children, path }: IAppProps): JSX.Element => {
   const {
     state: { favourites },
   } = useContext(Store);
@@ -31,7 +32,7 @@ const App = (props: any): JSX.Element => {
           </Link>
         </div>
       </header>
-      {props.children}
+      {children}
     </>
   );
 };
