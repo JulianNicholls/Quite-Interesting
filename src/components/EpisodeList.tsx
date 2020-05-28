@@ -14,9 +14,15 @@ const EpisodeList = (props: IEpisodeProps): Array<JSX.Element> => {
     console.log({ e });
     return (
       <article className="episode-box" key={e.id}>
-        {e.image !== null && e.image.medium && (
-          <img src={e.image.medium} alt={e.name} />
-        )}
+        <img
+          src={
+            e.image !== null && e.image.medium
+              ? e.image.medium
+              : 'https://via.placeholder.com/240x150&text=No%20Pickles'
+          }
+          alt={e.name}
+        />
+
         <div>{e.name}</div>
         <section>
           <div>
