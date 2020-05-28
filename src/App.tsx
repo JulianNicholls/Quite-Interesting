@@ -5,12 +5,12 @@ import { Store } from './store';
 
 import './App.css';
 
-interface IAppProps {
+interface AppProps {
   children: JSX.Element | Array<JSX.Element>;
   path: string;
 }
 
-const App = ({ children, path }: IAppProps): JSX.Element => {
+const App = ({ children, path }: AppProps): JSX.Element => {
   const {
     state: { favourites },
   } = useContext(Store);
