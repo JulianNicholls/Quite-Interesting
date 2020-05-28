@@ -1,7 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 
 import { Store } from '../store';
-import { IEpisodeProps } from '../interfaces';
 
 import { fetchData, toggleFavourite } from '../store/actions';
 

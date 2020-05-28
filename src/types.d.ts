@@ -3,7 +3,7 @@ interface IImages {
   original: string;
 }
 
-export interface IEpisode {
+interface IEpisode {
   id: number;
   name: string;
   season: number;
@@ -16,21 +16,21 @@ export interface IEpisode {
   url: string;
 }
 
-export interface IState {
+interface IState {
   episodes: Array<IEpisode>;
   favourites: Array<IEpisode>;
 }
 
-export type ActionType = string;
+type ActionType = string;
 
-export interface IAction {
+interface IAction {
   type: ActionType;
   payload: IEpisode | Array<IEpisode>;
 }
 
-export type Dispatch = React.Dispatch<IAction>;
+type Dispatch = React.Dispatch<IAction>;
 
-export interface IEpisodeProps {
+interface IEpisodeProps {
   episodes: Array<IEpisode>;
   store: { state: IState; dispatch: Dispatch };
   toggleFavourite(

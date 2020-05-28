@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 
 import { Store } from '../store';
-import { IEpisodeProps } from '../interfaces';
 
 import { toggleFavourite } from '../store/actions';
 

@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { IEpisode, IEpisodeProps } from '../interfaces';
-
 const EpisodeList = (props: IEpisodeProps): Array<JSX.Element> => {
   const {
     store: {

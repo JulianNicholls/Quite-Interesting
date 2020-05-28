@@ -1,5 +1,4 @@
 import { FETCH_DATA, ADD_FAVOURITE, REMOVE_FAVOURITE } from '../store';
-import { IEpisode, IAction } from '../interfaces';
 
 const URL: string =
   'https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes';
