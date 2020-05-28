@@ -12,7 +12,7 @@ const FavouritesPage = () => {
     state: { favourites },
   } = store;
 
-  const props: IEpisodeProps = {
+  const props: EpisodeProps = {
     episodes: favourites,
     store,
     toggleFavourite,

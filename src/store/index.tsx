@@ -5,18 +5,16 @@ export const ADD_FAVOURITE: ActionType = 'ADD_FAVOURITE';
 export const REMOVE_FAVOURITE: ActionType = 'REMOVE_FAVOURITE';
 // export const x: ActionType = 'x';
 
-const initialState: IState = { episodes: [], favourites: [] };
+const initialState: State = { episodes: [], favourites: [] };
 
-export const Store: React.Context<IState | any> = React.createContext(
-  initialState
-);
+export const Store: React.Context<State | any> = React.createContext(initialState);
 
-function reducer(state: IState, action: IAction): IState {
-  const episode = action.payload as IEpisode;
+function reducer(state: State, action: Action): State {
+  const episode = action.payload as Episode;
 
   switch (action.type) {
     case FETCH_DATA:
-      return { ...state, episodes: action.payload as Array<IEpisode> };
+      return { ...state, episodes: action.payload as Array<Episode> };
 
     case ADD_FAVOURITE:
       return {

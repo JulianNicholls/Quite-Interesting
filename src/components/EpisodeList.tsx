@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EpisodeList = (props: IEpisodeProps): Array<JSX.Element> => {
+const EpisodeList = (props: EpisodeProps): Array<JSX.Element> => {
   const {
     store: {
       state: { favourites },
@@ -10,7 +10,7 @@ const EpisodeList = (props: IEpisodeProps): Array<JSX.Element> => {
     toggleFavourite,
   } = props;
 
-  return episodes.map((e: IEpisode) => {
+  return episodes.map((e: Episode) => {
     console.log({ e });
     return (
       <article className="episode-box" key={e.id}>

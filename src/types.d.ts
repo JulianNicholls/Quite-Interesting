@@ -1,9 +1,9 @@
-interface IImages {
+interface Images {
   medium: string;
   original: string;
 }
 
-interface IEpisode {
+interface Episode {
   id: number;
   name: string;
   season: number;
@@ -11,31 +11,31 @@ interface IEpisode {
   airdate: string;
   airtime: string;
   runtime: number;
-  image: IImages;
+  image: Images;
   summary: string;
   url: string;
 }
 
-interface IState {
-  episodes: Array<IEpisode>;
-  favourites: Array<IEpisode>;
+interface State {
+  episodes: Array<Episode>;
+  favourites: Array<Episode>;
 }
 
 type ActionType = string;
 
-interface IAction {
+interface Action {
   type: ActionType;
-  payload: IEpisode | Array<IEpisode>;
+  payload: Episode | Array<Episode>;
 }
 
-type Dispatch = React.Dispatch<IAction>;
+type Dispatch = React.Dispatch<Action>;
 
-interface IEpisodeProps {
-  episodes: Array<IEpisode>;
-  store: { state: IState; dispatch: Dispatch };
+interface EpisodeProps {
+  episodes: Array<Episode>;
+  store: { state: State; dispatch: Dispatch };
   toggleFavourite(
-    episode: IEpisode,
-    favourites: Array<IEpisode>,
+    episode: Episode,
+    favourites: Array<Episode>,
     dispatch: Dispatch
   ): void;
 }
