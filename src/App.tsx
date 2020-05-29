@@ -5,6 +5,30 @@ import { Store } from './store';
 
 import './App.css';
 
+interface HProps {
+  favourites: number;
+}
+
+const Header = ({ favourites }: HProps) => {
+  return (
+    <header>
+      <h1>
+        Rick and Morty
+        <br />
+        <small>Pick your favourite episode.</small>
+      </h1>
+      <div>
+        <Link className="link" to="/">
+          Home
+        </Link>
+        <Link className="link" to="/favourites">
+          Favourites: {favourites === 0 ? 'none' : favourites}
+        </Link>
+      </div>
+    </header>
+  );
+};
+
 interface AppProps {
   children: JSX.Element | Array<JSX.Element>;
   path: string;
@@ -17,21 +41,7 @@ const App = ({ children, path }: AppProps): JSX.Element => {
 
   return (
     <>
-      <header>
-        <h1>
-          Rick and Morty
-          <br />
-          <small>Pick your favourite episode.</small>
-        </h1>
-        <div>
-          <Link className="link" to="/">
-            Home
-          </Link>
-          <Link className="link" to="/favourites">
-            Favourites: {favourites.length === 0 ? 'none' : favourites.length}
-          </Link>
-        </div>
-      </header>
+      <Header favourites={favourites.length} />
       {children}
     </>
   );
