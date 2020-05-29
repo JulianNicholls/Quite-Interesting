@@ -1,6 +1,6 @@
 {
-  "name": "ts-rick-and-morty",
-  "version": "0.1.0",
+  "name": "rick-and-morty",
+  "version": "0.9.0",
   "private": true,
   "dependencies": {
     "@reach/router": "^1.3.1",

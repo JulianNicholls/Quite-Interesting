@@ -17,7 +17,7 @@ const HomePage = () => {
     episodes.length === 0 && fetchData(dispatch);
   });
 
-  const props: EpisodeProps = {
+  const props: EpisodeListProps = {
     episodes,
     store,
     toggleFavourite,

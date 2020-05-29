@@ -30,7 +30,7 @@ interface Action {
 
 type Dispatch = React.Dispatch<Action>;
 
-interface EpisodeProps {
+interface EpisodeListProps {
   episodes: Array<Episode>;
   store: { state: State; dispatch: Dispatch };
   toggleFavourite(

@@ -1,6 +1,8 @@
 import React from 'react';
 
-const EpisodeList = (props: EpisodeProps): Array<JSX.Element> => {
+import EpisodeCard from './EpisodeCard';
+
+const EpisodeList = (props: EpisodeListProps): Array<JSX.Element> => {
   const {
     store: {
       state: { favourites },
@@ -10,35 +12,18 @@ const EpisodeList = (props: EpisodeProps): Array<JSX.Element> => {
     toggleFavourite,
   } = props;
 
-  return episodes.map((e: Episode) => {
-    console.log({ e });
-    return (
-      <article className="episode-box" key={e.id}>
-        <img
-          src={
-            e.image !== null && e.image.medium
-              ? e.image.medium
-              : 'https://via.placeholder.com/240x150&text=No%20Pickles'
-          }
-          alt={e.name}
-        />
+  const toggle = (episode: Episode) => {
+    toggleFavourite(episode, favourites, dispatch);
+  };
 
-        <div>{e.name}</div>
-        <section>
-          <div>
-            Episode S{e.season}:E{e.number}
-            <button
-              className="favourite-button"
-              type="button"
-              onClick={() => toggleFavourite(e, favourites, dispatch)}
-            >
-              {favourites.includes(e) ? 'Remove' : 'Favourite'}
-            </button>
-          </div>
-        </section>
-      </article>
-    );
-  });
+  return episodes.map((episode: Episode) => (
+    <EpisodeCard
+      key={episode.id}
+      episode={episode}
+      favourite={favourites.includes(episode)}
+      toggle={toggle}
+    />
+  ));
 };
 
 export default EpisodeList;
