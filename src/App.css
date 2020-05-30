@@ -1,11 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 
+:root {
+  --header-bg: #2c5282;
+  --header-text: #fff;
+  --card-bg: #a0bcde;
+  --highlight: #fffd01;
+}
+
 html {
   font-size: 14px;
 }
 
 body {
   font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 header {
@@ -14,9 +23,10 @@ header {
   top: 0;
   justify-content: space-between;
   align-items: center;
-  background: white;
-  border-bottom: 1px solid black;
-  padding: 0.5rem;
+  background: var(--header-bg);
+  color: var(--header-text);
+  border-bottom: 1px solid #333;
+  padding: 0.5rem 1rem;
   margin-bottom: 0.5rem;
 }
 
@@ -25,18 +35,19 @@ header h1 {
 }
 
 header h1 small {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: normal;
 }
 
 .link {
-  margin-right: 1rem;
-  color: #333;
+  font-size: 16px;
+  margin-right: 1.5rem;
+  color: var(--header-text);
   text-decoration: none;
 }
 
 .link:hover {
-  color: black;
+  color: var(--highlight);
   font-weight: bold;
 }
 
@@ -48,10 +59,20 @@ header h1 small {
 
 .episode-box {
   padding: 0.5rem;
+  width: 260px;
+  background: var(--card-bg);
+  margin: 2px;
 }
 
-.favourite-button {
-  margin-left: 1rem;
+.episode-box img {
+  display: block;
+  margin: 0 auto 0.5rem;;
+}
+
+.episode-box section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .loading {
