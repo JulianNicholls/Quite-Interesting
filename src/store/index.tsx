@@ -33,12 +33,10 @@ function reducer(state: State, action: Action): State {
   }
 }
 
-export function StoreProvider({
+export const StoreProvider = ({
   children,
-}: JSX.ElementChildrenAttribute): JSX.Element {
+}: JSX.ElementChildrenAttribute): JSX.Element => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   return <Store.Provider value={{ state, dispatch }}>{children}</Store.Provider>;
-}
-
-// https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes
+};
