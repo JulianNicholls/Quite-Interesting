@@ -9,7 +9,7 @@ const Header = ({ favourites }: HProps) => {
   return (
     <header>
       <h1>
-        Rick and Morty
+        Quite Interesting
         <br />
         <small>Pick your favourite episode.</small>
       </h1>

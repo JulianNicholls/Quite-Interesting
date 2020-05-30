@@ -6,23 +6,23 @@ interface ECProps {
   toggle: (episode: Episode) => void;
 }
 
-const EpisodeCard = ({ episode, favourite, toggle }: ECProps): JSX.Element => {
-  const { image } = episode;
+const strippedHTML = (html: string) => {
+  // https://css-tricks.com/snippets/javascript/strip-html-tags-in-javascript/
+  return html ? html.replace(/(<([^>]+)>)/gi, '') : '';
+};
 
+const EpisodeCard = ({ episode, favourite, toggle }: ECProps): JSX.Element => {
+  const { image, summary, name, season, number } = episode;
   return (
-    <article className="episode-box">
+    <article className="episode-box" data-summary={strippedHTML(summary)}>
       <img
-        src={
-          image !== null && image.medium
-            ? image.medium
-            : 'https://via.placeholder.com/250x140/eeeeee/333333&text=No+Alans'
-        }
-        alt={episode.name}
+        src={image !== null && image.medium ? image.medium : '/tv-static.png'}
+        alt={name}
       />
 
-      <div>{episode.name}</div>
+      <div>{name}</div>
       <section>
-        Season {episode.season}, Ep. {episode.number}
+        Season {season}, Ep. {number}
         <button
           className="favourite-button"
           type="button"
@@ -36,3 +36,5 @@ const EpisodeCard = ({ episode, favourite, toggle }: ECProps): JSX.Element => {
 };
 
 export default EpisodeCard;
+
+// : 'https://via.placeholder.com/250x140/999999/555555&text=No+Image'

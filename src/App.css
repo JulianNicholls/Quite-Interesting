@@ -1,10 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 
 :root {
-  --header-bg: #2c5282;
-  --header-text: #fff;
-  --card-bg: #a0bcde;
   --highlight: #fffd01;
+  --header-bg: #2c5282;
+  --header-text: #eee;
+  --card-bg: #a0bcde;
+
+  --overlay-bg: #ffffc0;
+  --overlay-text: #333;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 html {
@@ -27,10 +34,11 @@ header {
   color: var(--header-text);
   border-bottom: 1px solid #333;
   padding: 0.5rem 1rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 header h1 {
+  font-size: 2rem;
   margin: 0;
 }
 
@@ -58,15 +66,29 @@ header h1 small {
 }
 
 .episode-box {
-  padding: 0.5rem;
-  width: 260px;
+  position: relative;
+  padding: 0.75rem;
   background: var(--card-bg);
   margin: 2px;
 }
 
+.episode-box:hover::after {
+  content: attr(data-summary);
+  position: absolute;
+  background: var(--overlay-bg);
+  color: var(--overlay-text);
+  border: 1px solid #666;
+  border-radius: 8px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  top: 1rem;
+  /* left: 1rem;
+  right: -2rem; */
+  padding: 0.5rem;
+}
+
 .episode-box img {
   display: block;
-  margin: 0 auto 0.5rem;;
+  margin: 0 auto 0.5rem;
 }
 
 .episode-box section {
