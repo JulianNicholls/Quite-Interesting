@@ -14,14 +14,23 @@ const strippedHTML = (html: string) => {
 };
 
 const EpisodeCard = ({ episode, favourite, toggle }: ECProps): JSX.Element => {
-  const { image, summary, name, season, number } = episode;
+  const { image, summary, name, season, number, airdate, airtime, url } = episode;
+  const firstAiring =
+    airdate && airtime
+      ? new Date(`${airdate} ${airtime}`).toLocaleString('en-GB')
+      : 'TBA';
 
   return (
-    <article className="episode-box" data-summary={strippedHTML(summary)}>
-      <img
-        src={image !== null && image.medium ? image.medium : '/tv-static.png'}
-        alt={name}
-      />
+    <article
+      className="episode-box"
+      data-summary={`Original Broadcast: ${firstAiring}\n${strippedHTML(summary)}`}
+    >
+      <a href={url} target="_blank" rel="noopener noreferrer">
+        <img
+          src={image !== null && image.medium ? image.medium : '/tv-static.png'}
+          alt={name}
+        />
+      </a>
 
       <section>
         <div>
@@ -38,5 +47,3 @@ const EpisodeCard = ({ episode, favourite, toggle }: ECProps): JSX.Element => {
 };
 
 export default EpisodeCard;
-
-// : 'https://via.placeholder.com/250x140/999999/555555&text=No+Image'
