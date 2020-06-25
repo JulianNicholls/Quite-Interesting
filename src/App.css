@@ -6,7 +6,12 @@
   --header-text: #eee;
   --card-bg: #a0bcde;
 
-  --overlay-bg: #ffffc0;
+  --btn-color: #2c5282;
+  --btn-text: #fff;
+  --btn-hover: #2c52d2;
+  --btn-focus: #1f3a5b;
+
+  --overlay-bg: #ffffd8;
   --overlay-text: #333;
 }
 
@@ -24,6 +29,35 @@ body {
   padding: 0;
 }
 
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: var(--btn-color);
+  color: var(--btn-text);
+  font-family: inherit;
+  padding: 0.25em 0.75em;
+  min-width: 10ch;
+  min-height: 44px;
+  text-align: center;
+  line-height: 1.1;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  transition: 220ms all ease-in-out;
+}
+
+.btn:hover, .btn:active {
+  background-color: var(--btn-hover);
+}
+
+.btn:focus {
+  outline-style: solid;
+  outline-color: transparent;
+  box-shadow: 0 0 0 4px var(--btn-focus);
+}
+
 header {
   display: flex;
   position: sticky;
@@ -35,6 +69,7 @@ header {
   border-bottom: 1px solid #333;
   padding: 0.5rem 1rem;
   margin-bottom: 1rem;
+  z-index: 3;
 }
 
 header h1 {
@@ -81,9 +116,10 @@ header h1 small {
   border-radius: 8px;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
   top: 1rem;
-  /* left: 1rem;
-  right: -2rem; */
+  width: 280px;
   padding: 0.5rem;
+  white-space: pre-line;
+  z-index: 2;
 }
 
 .episode-box img {

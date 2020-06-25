@@ -8,11 +8,14 @@ interface ECProps {
 
 const strippedHTML = (html: string) => {
   // https://css-tricks.com/snippets/javascript/strip-html-tags-in-javascript/
-  return html ? html.replace(/(<([^>]+)>)/gi, '') : '';
+  const stripped = html ? html.replace(/(<([^>]+)>)/gi, '') : '';
+
+  return stripped.replace(/\.\s+/, '.\n');
 };
 
 const EpisodeCard = ({ episode, favourite, toggle }: ECProps): JSX.Element => {
   const { image, summary, name, season, number } = episode;
+
   return (
     <article className="episode-box" data-summary={strippedHTML(summary)}>
       <img
@@ -20,14 +23,13 @@ const EpisodeCard = ({ episode, favourite, toggle }: ECProps): JSX.Element => {
         alt={name}
       />
 
-      <div>{name}</div>
       <section>
-        Season {season}, Ep. {number}
-        <button
-          className="favourite-button"
-          type="button"
-          onClick={() => toggle(episode)}
-        >
+        <div>
+          {name}
+          <br />
+          Season {season}, Ep. {number}
+        </div>
+        <button className="btn" type="button" onClick={() => toggle(episode)}>
           {favourite ? 'Remove' : 'Favourite'}
         </button>
       </section>
