@@ -20,6 +20,10 @@ const App = ({ children, path }: AppProps): JSX.Element => {
     <>
       <Header favourites={favourites.length} />
       {children}
+      <footer>
+        &copy; <a href="https://reallybigshoe.co.uk">ReallyBigShoe</a> 2020. All
+        data supplied by <a href="http://tvmaze.com">TV Maze</a>
+      </footer>
     </>
   );
 };

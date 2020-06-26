@@ -1,7 +1,5 @@
 import { FETCH_DATA, ADD_FAVOURITE, REMOVE_FAVOURITE } from '../store';
 
-// This was a search, but on further inspection, this is a much better way
-// to get the info.
 const URL: string = 'https://api.tvmaze.com/shows/703/episodes';
 
 export const fetchData = async (dispatch: Dispatch) => {

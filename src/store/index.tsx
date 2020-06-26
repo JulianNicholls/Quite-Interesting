@@ -3,7 +3,6 @@ import React from 'react';
 export const FETCH_DATA: ActionType = 'FETCH_DATA';
 export const ADD_FAVOURITE: ActionType = 'ADD_FAVOURITE';
 export const REMOVE_FAVOURITE: ActionType = 'REMOVE_FAVOURITE';
-// export const x: ActionType = 'x';
 
 const initialState: State = { episodes: [], favourites: [] };
 
