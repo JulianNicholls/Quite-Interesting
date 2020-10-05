@@ -11,7 +11,7 @@ const Header = ({ favourites }: HProps) => {
       <h1>
         Quite Interesting
         <br />
-        <small>Pick your favourite episode.</small>
+        <small>Pick your favourite episodes.</small>
       </h1>
       <div>
         <Link className="link" to="/">

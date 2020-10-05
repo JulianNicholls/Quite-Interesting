@@ -26,17 +26,14 @@ const EpisodeCard = ({ episode, favourite, toggle }: ECProps): JSX.Element => {
       data-summary={`Original Broadcast: ${firstAiring}\n${strippedHTML(summary)}`}
     >
       <a href={url} target="_blank" rel="noopener noreferrer">
-        <img
-          src={image !== null && image.medium ? image.medium : '/tv-static.png'}
-          alt={name}
-        />
+        <img src={image?.medium ? image.medium : '/tv-static.png'} alt={name} />
       </a>
 
       <section>
         <div>
           {name}
           <br />
-          Season {season}, Ep. {number}
+          Series {season} ({name[0]}), No. {number}
         </div>
         <button className="btn" type="button" onClick={() => toggle(episode)}>
           {favourite ? 'Remove' : 'Favourite'}
