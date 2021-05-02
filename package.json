@@ -1,6 +1,6 @@
 {
   "name": "quite-interesting",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "private": true,
   "dependencies": {
     "@reach/router": "^1.3.1",
