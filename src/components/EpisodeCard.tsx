@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface ECProps {
   episode: Episode;
   favourite: boolean;
@@ -14,11 +12,20 @@ const strippedHTML = (html: string) => {
 };
 
 const EpisodeCard = ({ episode, favourite, toggle }: ECProps): JSX.Element => {
-  const { image, summary, name, season, number, airdate, airtime, url } = episode;
-  const firstAiring =
-    airdate && airtime
-      ? new Date(`${airdate} ${airtime}`).toLocaleString('en-GB')
-      : 'TBA';
+  const {
+    image,
+    summary,
+    name,
+    season,
+    number,
+    runtime,
+    airstamp,
+    airdate,
+    airtime,
+    url,
+  } = episode;
+  const dateStr = airstamp ?? `${airdate} ${airtime}`;
+  const firstAiring = dateStr ? new Date(dateStr).toLocaleString('en-GB') : 'TBA';
 
   return (
     <article
@@ -26,14 +33,18 @@ const EpisodeCard = ({ episode, favourite, toggle }: ECProps): JSX.Element => {
       data-summary={`Original Broadcast: ${firstAiring}\n${strippedHTML(summary)}`}
     >
       <a href={url} target="_blank" rel="noopener noreferrer">
-        <img src={image?.medium ? image.medium : '/tv-static.png'} alt={name} />
+        <img
+          src={image?.original ? image.original : '/tv-static.png'}
+          alt={name}
+        />
       </a>
 
       <section>
         <div>
           {name}
           <br />
-          Series {season} ({name[0]}), No. {number}
+          Series {String.fromCharCode(64 + season)}, No. {number}{' '}
+          {runtime && `- ${runtime} mins`}
         </div>
         <button className="btn" type="button" onClick={() => toggle(episode)}>
           {favourite ? 'Remove' : 'Favourite'}

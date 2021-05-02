@@ -1,5 +1,3 @@
-import React from 'react';
-
 import EpisodeCard from './EpisodeCard';
 
 const EpisodeList = (props: EpisodeListProps): Array<JSX.Element> => {

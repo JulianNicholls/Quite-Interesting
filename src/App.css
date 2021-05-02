@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 
 :root {
-  --highlight: #fffd01;
-  --header-bg: #2c5282;
-  --header-text: #eee;
-  --card-bg: #a0bcde;
+  --highlight: hsl(60, 100%, 50%);
+  --header-bg: hsl(213, 49%, 34%);
+  --header-text: hsl(167, 67%, 91%);
+  --card-bg: hsl(213, 85%, 83%);
 
-  --btn-color: #2c5282;
+  --btn-color: hsl(246, 70%, 46%);
   --btn-text: #fff;
-  --btn-hover: #2c52d2;
-  --btn-focus: #1f3a5b;
+  --btn-hover: hsl(226, 65%, 50%);
+  --btn-focus: hsl(213, 49%, 24%);
 
-  --overlay-bg: #ffffd8;
-  --overlay-text: #333;
+  --overlay-bg: hsl(60, 64%, 95%);
+  --overlay-text: hsl(0, 0%, 20%);
 }
 
 *, *::before, *::after {
@@ -72,6 +72,7 @@ footer a:hover {
 
 .btn:hover, .btn:active {
   background-color: var(--btn-hover);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 
 .btn:focus {
@@ -117,7 +118,7 @@ header h1 small {
 }
 
 .episode-layout {
-  margin-left: 1rem;
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
   max-width: 95vw;
@@ -125,10 +126,10 @@ header h1 small {
 
 .episode-box {
   position: relative;
-  padding: 0.75rem;
   background: var(--card-bg);
-  margin: 2px;
-  width: 300px;
+  margin: 0.2rem;
+  width: 350px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .episode-box:hover::after {
@@ -141,7 +142,7 @@ header h1 small {
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
   top: 1.5rem;
   left: 1rem;
-  width: 320px;
+  width: 50ch;
   padding: 0.6em;
   white-space: pre-line;
   z-index: 2;
@@ -149,14 +150,16 @@ header h1 small {
 }
 
 .episode-box img {
+  width: 100%;
   display: block;
   margin: 0 auto 0.5rem;
   cursor: pointer;
 }
 
 .episode-box section {
+  margin: 0 1rem 0.5rem;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
 }
 
