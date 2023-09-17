@@ -27,6 +27,7 @@ body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
+  min-height: 100vw;
 }
 
 a {
@@ -39,7 +40,11 @@ footer {
   margin-top: 1em;
   background: #eee;
   border-top: 1px solid #777;
-  color: #606060
+  color: #606060;
+
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 footer a {
@@ -61,7 +66,6 @@ footer a:hover {
   font-family: inherit;
   padding: 0.5em 1em;
   min-width: 10ch;
-  /* min-height: 44px; */
   text-align: center;
   line-height: 1.1;
   cursor: pointer;
@@ -117,11 +121,30 @@ header h1 small {
   font-weight: bold;
 }
 
+header form {
+  margin-inline-start: auto;
+  margin-inline-end: 3rem;
+}
+
+header label {
+  display: inline-block;
+  min-width: 3em;
+  margin-right: 1rem;
+}
+
+header input {
+  font-size: inherit;
+  display: inline-block;
+  width: 20em;
+  padding: 5px 7px;
+}
+
 .episode-layout {
   margin: auto;
   display: flex;
   flex-wrap: wrap;
   max-width: 95vw;
+  margin-bottom: 3rem;
 }
 
 .episode-box {

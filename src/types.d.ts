@@ -9,7 +9,7 @@ interface Episode {
   name: string;
   season: number;
   number: number;
-  type: string,
+  type: string;
   airdate: string;
   airtime: string;
   airstamp: string;
@@ -18,9 +18,21 @@ interface Episode {
   summary: string;
 }
 
+interface SearchResult {
+  score: number;
+  show: {
+    id: number;
+    url: string;
+    name: string;
+    genres: string[];
+    image: Images | null;
+  };
+}
+
 interface State {
   episodes: Array<Episode>;
   favourites: Array<Episode>;
+  searchResults: Array<SearchResult>;
 }
 
 type ActionType = string;
@@ -34,10 +46,6 @@ type Dispatch = React.Dispatch<Action>;
 
 interface EpisodeListProps {
   episodes: Array<Episode>;
-  store: { state: State; dispatch: Dispatch; };
-  toggleFavourite(
-    episode: Episode,
-    favourites: Array<Episode>,
-    dispatch: Dispatch
-  ): void;
+  store: { state: State; dispatch: Dispatch };
+  toggleFavourite(episode: Episode, favourites: Array<Episode>, dispatch: Dispatch): void;
 }

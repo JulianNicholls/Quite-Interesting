@@ -2,7 +2,7 @@ import React from 'react';
 
 import { FETCH_DATA, ADD_FAVOURITE, REMOVE_FAVOURITE } from './actions';
 
-const initialState: State = { episodes: [], favourites: [] };
+const initialState: State = { episodes: [], favourites: [], searchResults: [] };
 
 export const Store: React.Context<State | any> = React.createContext(initialState);
 
@@ -30,9 +30,12 @@ function reducer(state: State, action: Action): State {
   }
 }
 
-export const StoreProvider = ({
-  children,
-}: JSX.ElementChildrenAttribute): JSX.Element => {
+// Simple really!
+interface SPProps {
+  children: JSX.Element;
+}
+
+export const StoreProvider = ({ children }: SPProps): JSX.Element => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   return <Store.Provider value={{ state, dispatch }}>{children}</Store.Provider>;

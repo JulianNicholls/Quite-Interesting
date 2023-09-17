@@ -1,23 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Router, RouteComponentProps } from '@reach/router';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 
-import App from './App';
 import { StoreProvider } from './store';
-import HomePage from './components/HomePage';
-import FavouritesPage from './components/FavouritesPage';
+import App from './App';
 
-const RouterPage = (props: { pageComponent: JSX.Element } & RouteComponentProps) =>
-  props.pageComponent;
-
-ReactDOM.render(
-  <StoreProvider>
-    <Router>
-      <App path="/">
-        <RouterPage path="/" pageComponent={<HomePage />} />
-        <RouterPage path="/favourites" pageComponent={<FavouritesPage />} />
-      </App>
-    </Router>
-  </StoreProvider>,
-  document.getElementById('root')
+// The BrowserRouter must be around everything, it cannot be inside App
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <StoreProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </StoreProvider>
+  </React.StrictMode>
 );
