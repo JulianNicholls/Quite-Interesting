@@ -1,13 +1,13 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 
-import { Store } from '../store';
+import { useStore } from '../store';
 
 import { fetchData, toggleFavourite } from '../store/actions';
 
 const EpisodeList = React.lazy<any>(() => import('./EpisodeList'));
 
 const HomePage = () => {
-  const store = useContext(Store);
+  const store = useStore();
   const {
     state: { episodes },
     dispatch,

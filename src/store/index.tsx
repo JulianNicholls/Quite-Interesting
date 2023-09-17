@@ -1,10 +1,10 @@
-import React from 'react';
+import { createContext, useContext, useReducer } from 'react';
 
-import { FETCH_DATA, ADD_FAVOURITE, REMOVE_FAVOURITE } from './actions';
+import { FETCH_DATA, ADD_FAVOURITE, REMOVE_FAVOURITE, SEARCH_RESULTS } from './actions';
 
 const initialState: State = { episodes: [], favourites: [], searchResults: [] };
 
-export const Store: React.Context<State | any> = React.createContext(initialState);
+export const Store: React.Context<State | any> = createContext(initialState);
 
 function reducer(state: State, action: Action): State {
   const episode = action.payload as Episode;
@@ -25,6 +25,12 @@ function reducer(state: State, action: Action): State {
         favourites: state.favourites.filter(({ id }) => id !== episode.id),
       };
 
+    case SEARCH_RESULTS:
+      return {
+        ...state,
+        searchResults: action.payload as Array<SearchResult>,
+      };
+
     default:
       return state;
   }
@@ -36,7 +42,22 @@ interface SPProps {
 }
 
 export const StoreProvider = ({ children }: SPProps): JSX.Element => {
-  const [state, dispatch] = React.useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   return <Store.Provider value={{ state, dispatch }}>{children}</Store.Provider>;
+};
+
+export const useStoreSimple = () => useContext(Store);
+
+type USType = {
+  state: State;
+  dispatch: Dispatch;
+};
+
+export const useStore = (): USType => {
+  const context = useContext(Store);
+
+  if (!context) throw new Error('useStore must be inside StoreProvider');
+
+  return context;
 };
