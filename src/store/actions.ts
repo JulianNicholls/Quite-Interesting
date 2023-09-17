@@ -14,7 +14,7 @@ export const fetchData = async (dispatch: Dispatch) => {
   dispatch({ type: FETCH_DATA, payload: data });
 };
 
-export const search = async (dispatch: Dispatch, term: string) => {
+export const search = async (term: string, dispatch: Dispatch) => {
   const response = await fetch(searchURL + term);
   const data = await response.json();
 

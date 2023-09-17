@@ -39,7 +39,7 @@ type ActionType = string;
 
 interface Action {
   type: ActionType;
-  payload: Episode | Array<Episode>;
+  payload: Episode | Array<Episode> | Array<SearchResult>;
 }
 
 type Dispatch = React.Dispatch<Action>;
